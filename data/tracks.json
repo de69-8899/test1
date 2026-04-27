@@ -1,0 +1,74 @@
+[
+  {
+    "title": "Baby you",
+    "artist": "YUKA",
+    "album": "Local FLAC Library",
+    "src": "data/Baby you - YUKA.flac"
+  },
+  {
+    "title": "ビビッド",
+    "artist": "tayori",
+    "album": "memento",
+    "src": "data/ビビッド - Toyori.flac"
+  },
+  {
+    "title": "メメント",
+    "artist": "tayori",
+    "album": "memento",
+    "src": "data/メメント - Toyori.flac"
+  },
+  {
+    "title": "夢遊",
+    "artist": "tayori",
+    "album": "memento",
+    "src": "data/夢遊 - Toyori.flac"
+  },
+  {
+    "title": "星になる (feat. 倚水)",
+    "artist": "tayori",
+    "album": "memento",
+    "src": "data/星になる (feat. 倚水) - Toyori.flac"
+  },
+  {
+    "title": "春を待つ (feat. 倚水)",
+    "artist": "tayori",
+    "album": "memento",
+    "src": "data/春を待つ (feat. 倚水) - Toyori.flac"
+  },
+  {
+    "title": "深夜特急",
+    "artist": "tayori",
+    "album": "memento",
+    "src": "data/深夜特急 - Toyori.flac"
+  },
+  {
+    "title": "白日夢 (feat. 倚水)",
+    "artist": "tayori",
+    "album": "memento",
+    "src": "data/白日夢 (feat. 倚水) - Toyori.flac"
+  },
+  {
+    "title": "花がら",
+    "artist": "tayori",
+    "album": "memento",
+    "src": "data/花がら - Toyori.flac"
+  },
+  {
+    "title": "雪解け (feat. 倚水)",
+    "artist": "tayori",
+    "album": "memento",
+    "src": "data/雪解け (feat. 倚水) - Toyori.flac"
+  },
+  {
+    "title": "風のたより",
+    "artist": "tayori",
+    "album": "memento",
+    "src": "data/風のたより - Toyori.flac"
+  },
+  {
+    "title": "鯨の背中",
+    "artist": "tayori",
+    "album": "memento",
+    "src": "data/鯨の背中 - Toyori.flac"
+  }
+]
