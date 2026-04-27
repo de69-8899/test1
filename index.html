@@ -220,93 +220,177 @@
   </main>
 
   <script>
-    const audio = document.getElementById("audio");
-    const volume = document.getElementById("volume");
-    const libraryEl = document.getElementById("library");
-    const queueEl = document.getElementById("queue");
-    const search = document.getElementById("search");
-    const nowTitle = document.getElementById("nowTitle");
-    const nowArtist = document.getElementById("nowArtist");
+const audio = document.getElementById("audio");
+const volume = document.getElementById("volume");
+const libraryEl = document.getElementById("library");
+const queueEl = document.getElementById("queue");
+const search = document.getElementById("search");
+const nowTitle = document.getElementById("nowTitle");
+const nowArtist = document.getElementById("nowArtist");
 
-    let tracks = [];
-    let queue = [];
-    let currentTrack = null;
+let tracks = [];
+let queue = [];
+let currentTrack = null;
 
-    async function loadLibrary() {
-      const res = await fetch("data/tracks.json");
-      tracks = await res.json();
-      renderLibrary(tracks);
+/* ======================
+   LOAD LIBRARY
+====================== */
+async function loadLibrary() {
+  const res = await fetch("data/tracks.json");
+  tracks = await res.json();
+
+  const urlTrack = getURLParam("track");
+  const autoplay = getURLParam("autoplay") === "1";
+
+  if (urlTrack) {
+    const found = tracks.find(t => t.src === urlTrack);
+    if (found) {
+      playTrack(found, autoplay);
     }
+  }
 
-    function renderLibrary(list) {
-      libraryEl.innerHTML = "";
+  renderLibrary(tracks);
+}
 
-      list.forEach(track => {
-        const item = document.createElement("div");
-        item.className = "track" + (currentTrack?.src === track.src ? " active" : "");
+/* ======================
+   URL HELPERS
+====================== */
+function getURLParam(name) {
+  const params = new URLSearchParams(window.location.search);
+  return params.get(name);
+}
 
-        item.innerHTML = `
-          <div>
-            <strong>${track.title}</strong>
-            <p class="muted">${track.artist || "Unknown Artist"} • ${track.album || "Unknown Album"}</p>
-          </div>
-          <button>Add</button>
-        `;
+function generateShareLink(track) {
+  const base = window.location.origin + window.location.pathname;
+  return `${base}?track=${encodeURIComponent(track.src)}&autoplay=1`;
+}
 
-        item.onclick = () => playTrack(track);
-        item.querySelector("button").onclick = e => {
-          e.stopPropagation();
-          queue.push(track);
-          renderQueue();
-        };
+/* ======================
+   LIBRARY
+====================== */
+function renderLibrary(list) {
+  libraryEl.innerHTML = "";
 
-        libraryEl.appendChild(item);
-      });
-    }
+  list.forEach(track => {
+    const item = document.createElement("div");
+    item.className = "track" + (currentTrack?.src === track.src ? " active" : "");
 
-    function playTrack(track) {
-      currentTrack = track;
-      audio.src = track.src;
-      audio.play();
+    item.innerHTML = `
+      <div>
+        <strong>${track.title}</strong>
+        <p class="muted">${track.artist || "Unknown Artist"} • ${track.album || "Unknown Album"}</p>
+      </div>
+      <div style="display:flex; gap:8px;">
+        <button class="add">Add</button>
+        <button class="share">Share</button>
+      </div>
+    `;
 
-      nowTitle.textContent = track.title;
-      nowArtist.textContent = `${track.artist || "Unknown Artist"} • ${track.album || "Unknown Album"}`;
+    item.onclick = () => playTrack(track);
 
-      renderLibrary(getFilteredTracks());
-    }
-
-    function renderQueue() {
-      queueEl.innerHTML = queue.length
-        ? queue.map(t => `<div class="queue-item">${t.title} — ${t.artist || "Unknown Artist"}</div>`).join("")
-        : `<p class="muted">Queue is empty</p>`;
-    }
-
-    function getFilteredTracks() {
-      const q = search.value.toLowerCase();
-
-      return tracks.filter(track =>
-        `${track.title} ${track.artist} ${track.album}`.toLowerCase().includes(q)
-      );
-    }
-
-    search.addEventListener("input", () => {
-      renderLibrary(getFilteredTracks());
-    });
-
-    audio.addEventListener("ended", () => {
-      const next = queue.shift();
+    item.querySelector(".add").onclick = e => {
+      e.stopPropagation();
+      queue.push(track);
       renderQueue();
+    };
 
-      if (next) playTrack(next);
+    item.querySelector(".share").onclick = e => {
+      e.stopPropagation();
+      shareTrack(track);
+    };
+
+    libraryEl.appendChild(item);
+  });
+}
+
+/* ======================
+   PLAYER
+====================== */
+function playTrack(track, autoplay = true) {
+  currentTrack = track;
+
+  audio.src = track.src;
+
+  nowTitle.textContent = track.title;
+  nowArtist.textContent = `${track.artist || "Unknown Artist"} • ${track.album || "Unknown Album"}`;
+
+  renderLibrary(getFilteredTracks());
+
+  if (autoplay) {
+    audio.muted = true;
+
+    audio.play()
+      .then(() => {
+        audio.muted = false;
+      })
+      .catch(() => {
+        console.log("Autoplay still blocked");
+      });
+  }
+}
+
+/* ======================
+   SHARE FUNCTION
+====================== */
+function shareTrack(track) {
+  const link = generateShareLink(track);
+
+  if (navigator.share) {
+    navigator.share({
+      title: track.title,
+      text: `Listen: ${track.title}`,
+      url: link
     });
+  } else {
+    navigator.clipboard.writeText(link);
+    alert("Link copied to clipboard!");
+  }
+}
 
-    volume.addEventListener("input", () => {
-      audio.volume = volume.value;
-    });
+/* ======================
+   QUEUE
+====================== */
+function renderQueue() {
+  queueEl.innerHTML = queue.length
+    ? queue.map(t => `<div class="queue-item">${t.title} — ${t.artist || "Unknown Artist"}</div>`).join("")
+    : `<p class="muted">Queue is empty</p>`;
+}
 
-    audio.volume = 0.8;
-    renderQueue();
-    loadLibrary();
-  </script>
+audio.addEventListener("ended", () => {
+  const next = queue.shift();
+  renderQueue();
+  if (next) playTrack(next);
+});
+
+/* ======================
+   SEARCH
+====================== */
+function getFilteredTracks() {
+  const q = search.value.toLowerCase();
+
+  return tracks.filter(track =>
+    `${track.title} ${track.artist} ${track.album}`.toLowerCase().includes(q)
+  );
+}
+
+search.addEventListener("input", () => {
+  renderLibrary(getFilteredTracks());
+});
+
+/* ======================
+   VOLUME
+====================== */
+volume.addEventListener("input", () => {
+  audio.volume = volume.value;
+});
+
+audio.volume = 0.8;
+
+/* ======================
+   INIT
+====================== */
+renderQueue();
+loadLibrary();
+</script>
 </body>
 </html>
