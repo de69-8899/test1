@@ -317,15 +317,13 @@ function playTrack(track, autoplay = true) {
   renderLibrary(getFilteredTracks());
 
   if (autoplay) {
-    audio.muted = true;
+    const playPromise = audio.play();
 
-    audio.play()
-      .then(() => {
-        audio.muted = false;
-      })
-      .catch(() => {
-        console.log("Autoplay still blocked");
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        console.log("Autoplay blocked by browser");
       });
+    }
   }
 }
 
