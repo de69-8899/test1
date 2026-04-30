@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prism Crack Tutorial</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111827;
+      color: #f9fafb;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 24px;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 760px;
+      background: #1f2937;
+      border: 1px solid #374151;
+      border-radius: 18px;
+      padding: 32px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    }
+
+    h1 {
+      margin-top: 0;
+      font-size: 32px;
+    }
+
+    .subtitle {
+      color: #d1d5db;
+      margin-bottom: 28px;
+    }
+
+    ol {
+      padding-left: 0;
+      list-style: none;
+      counter-reset: step;
+    }
+
+    li {
+      counter-increment: step;
+      background: #111827;
+      border: 1px solid #374151;
+      border-radius: 14px;
+      padding: 18px 18px 18px 64px;
+      margin-bottom: 16px;
+      position: relative;
+    }
+
+    li::before {
+      content: counter(step);
+      position: absolute;
+      left: 18px;
+      top: 18px;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #6366f1;
+      color: white;
+      display: grid;
+      place-items: center;
+      font-weight: bold;
+    }
+
+    a {
+      color: #93c5fd;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .command-box {
+      margin-top: 12px;
+      display: flex;
+      gap: 10px;
+      background: #030712;
+      border: 1px solid #4b5563;
+      border-radius: 12px;
+      padding: 12px;
+      align-items: center;
+    }
+
+    code {
+      flex: 1;
+      color: #a7f3d0;
+      font-family: Consolas, monospace;
+      overflow-x: auto;
+      white-space: nowrap;
+      padding-bottom: 2px;
+    }
+
+    button {
+      border: none;
+      background: #6366f1;
+      color: white;
+      padding: 10px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background: #4f46e5;
+    }
+
+    .note {
+      margin-top: 24px;
+      color: #9ca3af;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    /* ===== PRETTY SCROLLBAR (UNOBTRUSIVE) ===== */
+
+    code {
+      scrollbar-width: thin; /* Firefox */
+      scrollbar-color: rgba(99,102,241,0.5) transparent;
+    }
+
+    code::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    code::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    code::-webkit-scrollbar-thumb {
+      background: rgba(99, 102, 241, 0.35);
+      border-radius: 999px;
+      transition: background 0.2s ease;
+    }
+
+    code::-webkit-scrollbar-thumb:hover {
+      background: rgba(99, 102, 241, 0.7);
+    }
+
+    code::-webkit-scrollbar-button {
+      display: none;
+    }
+
+    /* Only show scrollbar clearly on hover */
+    .command-box code::-webkit-scrollbar {
+      opacity: 0;
+    }
+
+    .command-box:hover code::-webkit-scrollbar {
+      opacity: 1;
+    }
+
+  </style>
+</head>
+
+<body>
+  <main class="card">
+    <h1>Prism Crack Tutorial :</h1>
+    <!-- <p class="subtitle">
+      Follow these simple steps to install and prepare Prism Launcher.
+    </p> -->
+
+    <ol>
+      <li>
+        Download Prism Launcher from:
+        <br />
+        <a href="https://prismlauncher.org/download/windows/" target="_blank">
+          Prism Launcher Windows Download
+        </a>
+      </li>
+
+      <li>
+        Install Prism Launcher on your computer.
+      </li>
+
+      <li>
+        Close Prism Launcher, then run this command in CMD as administrator:
+
+        <div class="command-box">
+          <code id="command">echo {"accounts": [{"entitlement": {"canPlayMinecraft": true,"ownsMinecraft": true},"type": "MSA"}],"formatVersion": 3} > "%appdata%\PrismLauncher\accounts.json"</code>
+          <button onclick="copyCommand()">Copy</button>
+        </div>
+      </li>
+
+      <li>
+        Enjoy the launcher.
+      </li>
+    </ol>
+
+    <p class="note">
+      Tip: Right-click Command Prompt and choose “Run as administrator”.
+    </p>
+  </main>
+
+  <script>
+    function copyCommand() {
+      const command = document.getElementById("command").innerText;
+
+      navigator.clipboard.writeText(command).then(() => {
+        const button = document.querySelector("button");
+        button.innerText = "Copied!";
+
+        setTimeout(() => {
+          button.innerText = "Copy";
+        }, 1500);
+      });
+    }
+  </script>
+</body>
+</html>
