@@ -28,59 +28,113 @@
   }
 }
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: Inter, system-ui;
-  background: var(--bg);
+  font-family: Inter, system-ui, sans-serif;
+  background: radial-gradient(circle at top, var(--accent-soft), var(--bg) 45%);
   color: var(--text);
   display: flex;
   justify-content: center;
   padding: 24px;
+  min-height: 100vh;
 }
 
 .app {
   width: 100%;
-  max-width: 1100px;
+  max-width: 1150px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  gap: 22px;
 }
 
 .card {
-  background: var(--card);
+  background: color-mix(in srgb, var(--card) 92%, transparent);
   border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 20px;
+  border-radius: 26px;
+  padding: 22px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.12);
 }
 
 .cover {
-  height: 220px;
-  border-radius: 16px;
-  background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+  width: 100%;
+  max-width: 260px;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto 18px;
+  border-radius: 18px;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 60px;
+  background: rgba(0,0,0,0.2);
 }
 
-audio { width: 100%; }
+.cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+h1, h2, h3, p {
+  margin: 0;
+}
+
+#nowTitle {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+#nowMeta {
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+audio {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.volume {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--muted);
+}
+
+input[type="range"] {
+  width: 100%;
+  accent-color: var(--accent);
+}
 
 .search {
   width: 100%;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 13px 15px;
+  border-radius: 15px;
   border: 1px solid var(--border);
-  margin-bottom: 10px;
+  background: var(--bg);
+  color: var(--text);
+  outline: none;
+  margin: 16px 0;
+}
+
+.search:focus {
+  border-color: var(--accent);
 }
 
 .track {
   border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 12px;
+  border-radius: 18px;
+  padding: 14px;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 8px;
+  gap: 12px;
+  margin-bottom: 10px;
   cursor: pointer;
+  transition: 0.2s;
 }
 
 .track:hover {
@@ -90,70 +144,187 @@ audio { width: 100%; }
 .track.active {
   background: var(--accent);
   color: white;
+  border-color: var(--accent);
 }
 
-.track-info { display: grid; gap: 4px; }
+.track-info {
+  display: grid;
+  gap: 5px;
+}
+
+.track-info span {
+  color: var(--muted);
+}
+
+.track.active .track-info span {
+  color: rgba(255,255,255,0.85);
+}
 
 .tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
+  gap: 6px;
+  margin-top: 4px;
 }
 
 .tags span {
   font-size: 11px;
   background: var(--accent-soft);
-  padding: 3px 6px;
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 4px 8px;
   border-radius: 999px;
 }
 
 .track.active .tags span {
-  background: rgba(255,255,255,0.2);
+  background: rgba(255,255,255,0.18);
+  color: white;
+  border-color: rgba(255,255,255,0.25);
 }
 
-.queue-item {
-  font-size: 13px;
-  padding: 6px;
+.track-actions {
+  display: flex;
+  gap: 8px;
+  align-items: start;
 }
 
 button {
   border: none;
-  padding: 6px 10px;
-  border-radius: 8px;
+  padding: 7px 10px;
+  border-radius: 999px;
   cursor: pointer;
+  background: var(--bg);
+  color: var(--text);
 }
 
+button:hover {
+  background: var(--accent);
+  color: white;
+}
+
+.queue-item {
+  background: var(--bg);
+  border-radius: 14px;
+  padding: 10px;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.empty {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+@media (max-width: 850px) {
+  .app {
+    grid-template-columns: 1fr;
+  }
+
+  .cover {
+  width: 100%;
+  max-width: 320px;              /* prevents it from stretching wide */
+  aspect-ratio: 2 / 3;           /* vertical portrait ratio */
+  margin: 0 auto 18px;           /* center horizontally */
+  border-radius: 22px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-soft));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-size: 64px;
+}
+}
+
+.player-hero {
+  position: relative;
+  padding: 30px 0;
+  border-radius: 26px;
+  overflow: hidden;
+}
+
+/* 🔥 FULL WIDTH BLUR BACKGROUND */
+.player-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: var(--cover-url);
+  background-size: cover;
+  background-position: center;
+  filter: blur(80px) brightness(0.4);
+  transform: scale(1.2);
+  z-index: 0;
+}
+
+/* dark overlay for readability */
+.player-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.4), transparent 40%, rgba(0,0,0,0.6));
+  z-index: 0;
+}
+
+/* keep content above blur */
+.player-hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+.player-text {
+  max-width: 260px;
+  margin: 0 auto;           /* center with cover */
+  padding: 0 12px;          /* 🔥 fixes left/right spacing */
+  text-align: center;
+}
+
+#nowTitle {
+  margin-top: 8px;
+  margin-bottom: 6px;
+}
+
+#nowMeta {
+  color: var(--muted);
+  line-height: 1.6;
+}
 </style>
 </head>
 
 <body>
 
-<div class="app">
+<main class="app">
 
-  <div class="card">
-    <div class="cover">♪</div>
+  <section class="card">
+    <div class="player-hero">
+        <div class="cover" id="cover">♪</div>
 
-    <h2 id="nowTitle">No track</h2>
-    <p id="nowMeta">Select a track</p>
+        <div class="player-text">
+            <h1 id="nowTitle">No track selected</h1>
+            <p id="nowMeta">Choose a song</p>
+        </div>
 
+    </div>
     <audio id="audio" controls></audio>
 
-    <div>
-      Volume
+    <div class="volume">
+      <span>Volume</span>
       <input id="volume" type="range" min="0" max="1" step="0.01" value="0.8">
     </div>
-  </div>
+  </section>
 
-  <div class="card">
-    <input id="search" class="search" placeholder="Search...">
+  <aside class="card">
+    <h2>Library</h2>
+    <p class="empty">Indexed from <code>data/tracks.json</code></p>
+
+    <input id="search" class="search" placeholder="Search title, artist, album, genre...">
 
     <div id="library"></div>
 
     <h3>Queue</h3>
     <div id="queue"></div>
-  </div>
+  </aside>
 
-</div>
+</main>
 
 <script>
 const audio = document.getElementById("audio");
@@ -163,128 +334,174 @@ const search = document.getElementById("search");
 const nowTitle = document.getElementById("nowTitle");
 const nowMeta = document.getElementById("nowMeta");
 const volume = document.getElementById("volume");
+const cover = document.getElementById("cover");
 
 let tracks = [];
 let queue = [];
 let currentTrack = null;
 
-function formatDuration(s){
-  if(!s) return "";
-  let m=Math.floor(s/60);
-  let sec=Math.floor(s%60).toString().padStart(2,"0");
-  return `${m}:${sec}`;
+function formatDuration(seconds) {
+  if (!seconds) return "Unknown Length";
+
+  const min = Math.floor(seconds / 60);
+  const sec = Math.floor(seconds % 60).toString().padStart(2, "0");
+
+  return `${min}:${sec}`;
 }
 
-function formatBitrate(b){
-  if(!b) return "";
-  return `${Math.round(b/1000)}kbps`;
+function formatBitrate(bitrate) {
+  if (!bitrate) return "Unknown Bitrate";
+  return `${Math.round(bitrate / 1000)} kbps`;
 }
 
-function getParam(n){
-  return new URLSearchParams(location.search).get(n);
+function getParam(name) {
+  return new URLSearchParams(location.search).get(name);
 }
 
-function generateLink(track){
-  return location.origin+location.pathname+
+function generateLink(track) {
+  return location.origin + location.pathname +
     `?track=${encodeURIComponent(track.src)}&autoplay=1`;
 }
 
-async function load(){
+async function loadLibrary() {
   tracks = await (await fetch("data/tracks.json")).json();
 
-  let t = getParam("track");
-  let auto = getParam("autoplay")==="1";
+  const urlTrack = getParam("track");
+  const autoplay = getParam("autoplay") === "1";
 
-  if(t){
-    let f = tracks.find(x=>x.src===t);
-    if(f) play(f,auto);
+  if (urlTrack) {
+    const found = tracks.find(track => track.src === urlTrack);
+    if (found) playTrack(found, autoplay);
   }
 
-  render(tracks);
+  renderLibrary(tracks);
+  renderQueue();
 }
 
-function render(list){
-  libraryEl.innerHTML="";
+function renderLibrary(list) {
+  libraryEl.innerHTML = "";
 
-  list.forEach(t=>{
-    let div=document.createElement("div");
-    div.className="track"+(currentTrack?.src===t.src?" active":"");
+  list.forEach(track => {
+    const item = document.createElement("div");
+    item.className = "track" + (currentTrack?.src === track.src ? " active" : "");
 
-    div.innerHTML=`
+    item.innerHTML = `
       <div class="track-info">
-        <strong>${t.title}</strong>
-        <span>${t.artist} • ${t.album}</span>
+        <strong>${track.title || "Unknown Title"}</strong>
+        <span>${track.artist || "Unknown Artist"} • ${track.album || "Unknown Album"}</span>
+
         <div class="tags">
-          <span>${t.genre||""}</span>
-          <span>${t.date||""}</span>
-          <span>${formatDuration(t.duration)}</span>
-          <span>${formatBitrate(t.bitrate)}</span>
+          <span>${track.genre || "No Genre"}</span>
+          <span>${track.date || "No Date"}</span>
+          <span>${formatDuration(track.duration)}</span>
+          <span>${formatBitrate(track.bitrate)}</span>
         </div>
       </div>
-      <div>
-        <button onclick="event.stopPropagation();addQ('${t.src}')">+</button>
-        <button onclick="event.stopPropagation();share('${t.src}')">↗</button>
+
+      <div class="track-actions">
+        <button class="add">+</button>
+        <button class="share">Share</button>
       </div>
     `;
 
-    div.onclick=()=>play(t);
+    item.onclick = () => playTrack(track);
 
-    libraryEl.appendChild(div);
+    item.querySelector(".add").onclick = e => {
+      e.stopPropagation();
+      addQueue(track);
+    };
+
+    item.querySelector(".share").onclick = e => {
+      e.stopPropagation();
+      shareTrack(track);
+    };
+
+    libraryEl.appendChild(item);
   });
 }
 
-function play(t,auto=true){
-  currentTrack=t;
-  audio.src=t.src;
+function playTrack(track, autoplay = true) {
+  currentTrack = track;
+  audio.src = track.src;
 
-  nowTitle.textContent=t.title;
-  nowMeta.innerHTML=
-    `${t.artist} • ${t.album}<br>
-     ${t.genre||""} • ${t.date||""} • ${formatDuration(t.duration)} • ${formatBitrate(t.bitrate)}`;
+  nowTitle.textContent = track.title || "Unknown Title";
 
-  render(filter());
+  nowMeta.innerHTML = `
+    ${track.artist || "Unknown Artist"} • ${track.album || "Unknown Album"}<br>
+    ${track.genre || "No Genre"} • ${track.date || "No Date"} • ${formatDuration(track.duration)} • ${formatBitrate(track.bitrate)}
+  `;
 
-  if(auto){
-    audio.play().catch(()=>{});
+  const hero = document.querySelector(".player-hero");
+
+if (track.cover) {
+  hero.style.setProperty("--cover-url", `url('${track.cover}')`);
+  cover.style.setProperty("--cover-url", `url('${track.cover}')`);
+  cover.innerHTML = `<img src="${track.cover}" alt="Album cover">`;
+} else {
+  cover.style.removeProperty("--cover-url");
+  cover.innerHTML = "♪";
+}
+
+  renderLibrary(filterTracks());
+
+  if (autoplay) {
+    audio.play().catch(() => {});
   }
 }
 
-function addQ(src){
-  let t=tracks.find(x=>x.src===src);
-  queue.push(t);
-  renderQ();
+function addQueue(track) {
+  queue.push(track);
+  renderQueue();
 }
 
-function renderQ(){
-  queueEl.innerHTML = queue.map(t=>`<div class="queue-item">${t.title}</div>`).join("") || "Empty";
+function renderQueue() {
+  queueEl.innerHTML = queue.length
+    ? queue.map(track => `<div class="queue-item">${track.title || "Unknown Title"} — ${track.artist || "Unknown Artist"}</div>`).join("")
+    : `<p class="empty">Queue is empty</p>`;
 }
 
-audio.onended=()=>{
-  let n=queue.shift();
-  renderQ();
-  if(n) play(n);
-};
+audio.addEventListener("ended", () => {
+  const next = queue.shift();
+  renderQueue();
 
-function share(src){
-  let t=tracks.find(x=>x.src===src);
-  let link=generateLink(t);
-  navigator.clipboard.writeText(link);
-  alert("Copied!");
+  if (next) playTrack(next);
+});
+
+function shareTrack(track) {
+  const link = generateLink(track);
+
+  if (navigator.share) {
+    navigator.share({
+      title: track.title || "Track",
+      text: `Listen to ${track.title || "this track"}`,
+      url: link
+    });
+  } else {
+    navigator.clipboard.writeText(link);
+    alert("Link copied!");
+  }
 }
 
-function filter(){
-  let q=search.value.toLowerCase();
-  return tracks.filter(t=>
-    (t.title+t.artist+t.album).toLowerCase().includes(q)
+function filterTracks() {
+  const q = search.value.toLowerCase();
+
+  return tracks.filter(track =>
+    `${track.title} ${track.artist} ${track.album} ${track.genre} ${track.date}`
+      .toLowerCase()
+      .includes(q)
   );
 }
 
-search.oninput=()=>render(filter());
+search.addEventListener("input", () => {
+  renderLibrary(filterTracks());
+});
 
-volume.oninput=()=>audio.volume=volume.value;
-audio.volume=0.8;
+volume.addEventListener("input", () => {
+  audio.volume = volume.value;
+});
 
-load();
+audio.volume = 0.8;
+loadLibrary();
 </script>
 
 </body>

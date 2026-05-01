@@ -7,6 +7,7 @@
     "date": "2024",
     "duration": 180.066021,
     "bitrate": 1984935,
+    "cover": "data/covers/0.jpg",
     "src": "data/0 - Zanmu - Ado.flac"
   },
   {
@@ -17,6 +18,7 @@
     "date": "2023-01-18",
     "duration": 163.473152,
     "bitrate": 942188,
+    "cover": "data/covers/Baby you.jpg",
     "src": "data/Baby you - Baby you - YUKA.flac"
   },
   {
@@ -27,6 +29,7 @@
     "date": "2024",
     "duration": 252.760604,
     "bitrate": 1792869,
+    "cover": "data/covers/DIGNITY.jpg",
     "src": "data/DIGNITY - Zanmu - Ado.flac"
   },
   {
@@ -37,6 +40,7 @@
     "date": "2024",
     "duration": 180.221833,
     "bitrate": 1737177,
+    "cover": "data/covers/MIRROR.jpg",
     "src": "data/MIRROR - Zanmu - Ado.flac"
   },
   {
@@ -47,6 +51,7 @@
     "date": "2024",
     "duration": 184.211979,
     "bitrate": 1778157,
+    "cover": "data/covers/Value.jpg",
     "src": "data/Value - Zanmu - Ado.flac"
   },
   {
@@ -57,6 +62,7 @@
     "date": "2024",
     "duration": 261.052438,
     "bitrate": 1809381,
+    "cover": "data/covers/いばら.jpg",
     "src": "data/いばら - Zanmu - Ado.flac"
   },
   {
@@ -67,6 +73,7 @@
     "date": "2024",
     "duration": 194.522083,
     "bitrate": 1831739,
+    "cover": "data/covers/アタシは問題作.jpg",
     "src": "data/アタシは問題作 - Zanmu - Ado.flac"
   },
   {
@@ -77,6 +84,7 @@
     "date": "2024",
     "duration": 212.570917,
     "bitrate": 1867258,
+    "cover": "data/covers/オールナイトレディオ.jpg",
     "src": "data/オールナイトレディオ - Zanmu - Ado.flac"
   },
   {
@@ -87,6 +95,7 @@
     "date": "2024",
     "duration": 191.789375,
     "bitrate": 1899680,
+    "cover": "data/covers/クラクラ.jpg",
     "src": "data/クラクラ - Zanmu - Ado.flac"
   },
   {
@@ -97,6 +106,7 @@
     "date": "2024",
     "duration": 184.624667,
     "bitrate": 1874246,
+    "cover": "data/covers/ショコラカタブラ.jpg",
     "src": "data/ショコラカタブラ - Zanmu - Ado.flac"
   },
   {
@@ -107,6 +117,7 @@
     "date": "2024",
     "duration": 214.400021,
     "bitrate": 1883164,
+    "cover": "data/covers/ビビッド.jpg",
     "src": "data/ビビッド - memento - tayori.flac"
   },
   {
@@ -117,6 +128,7 @@
     "date": "2024",
     "duration": 217.1155,
     "bitrate": 1744643,
+    "cover": "data/covers/メメント.jpg",
     "src": "data/メメント - memento - tayori.flac"
   },
   {
@@ -127,6 +139,7 @@
     "date": "2024",
     "duration": 178.071229,
     "bitrate": 1921218,
+    "cover": "data/covers/リベリオン.jpg",
     "src": "data/リベリオン - Zanmu - Ado.flac"
   },
   {
@@ -137,6 +150,7 @@
     "date": "2024",
     "duration": 197.860833,
     "bitrate": 1890614,
+    "cover": "data/covers/ルル.jpg",
     "src": "data/ルル - Zanmu - Ado.flac"
   },
   {
@@ -147,6 +161,7 @@
     "date": "2024",
     "duration": 259.592938,
     "bitrate": 1765225,
+    "cover": "data/covers/向日葵.jpg",
     "src": "data/向日葵 - Zanmu - Ado.flac"
   },
   {
@@ -157,6 +172,7 @@
     "date": "2024",
     "duration": 192.663083,
     "bitrate": 1848870,
+    "cover": "data/covers/唱.jpg",
     "src": "data/唱 - Zanmu - Ado.flac"
   },
   {
@@ -167,6 +183,7 @@
     "date": "2024",
     "duration": 199.800021,
     "bitrate": 1718521,
+    "cover": "data/covers/夢遊.jpg",
     "src": "data/夢遊 - memento - tayori.flac"
   },
   {
@@ -177,6 +194,7 @@
     "date": "2024",
     "duration": 188.279188,
     "bitrate": 1891610,
+    "cover": "data/covers/抜け空.jpg",
     "src": "data/抜け空 - Zanmu - Ado.flac"
   },
   {
@@ -187,6 +205,7 @@
     "date": "2024",
     "duration": 233.777792,
     "bitrate": 1893988,
+    "cover": "data/covers/星になる _feat. 倚水_.jpg",
     "src": "data/星になる (feat. 倚水) - memento - tayori.flac"
   },
   {
@@ -197,6 +216,7 @@
     "date": "2024",
     "duration": 260.571438,
     "bitrate": 1865861,
+    "cover": "data/covers/春を待つ _feat. 倚水_.jpg",
     "src": "data/春を待つ (feat. 倚水) - memento - tayori.flac"
   },
   {
@@ -207,6 +227,7 @@
     "date": "2024",
     "duration": 246.320021,
     "bitrate": 1682042,
+    "cover": "data/covers/永遠のあくる日.jpg",
     "src": "data/永遠のあくる日 - Zanmu - Ado.flac"
   },
   {
@@ -217,6 +238,7 @@
     "date": "2024",
     "duration": 261.857146,
     "bitrate": 1865355,
+    "cover": "data/covers/深夜特急.jpg",
     "src": "data/深夜特急 - memento - tayori.flac"
   },
   {
@@ -227,6 +249,7 @@
     "date": "2024",
     "duration": 250.833333,
     "bitrate": 1916276,
+    "cover": "data/covers/白日夢 _feat. 倚水_.jpg",
     "src": "data/白日夢 (feat. 倚水) - memento - tayori.flac"
   },
   {
@@ -237,6 +260,7 @@
     "date": "2024",
     "duration": 205.200021,
     "bitrate": 1836169,
+    "cover": "data/covers/花がら.jpg",
     "src": "data/花がら - memento - tayori.flac"
   },
   {
@@ -247,6 +271,7 @@
     "date": "2024",
     "duration": 193.143021,
     "bitrate": 1880476,
+    "cover": "data/covers/行方知れず.jpg",
     "src": "data/行方知れず - Zanmu - Ado.flac"
   },
   {
@@ -257,6 +282,7 @@
     "date": "2024",
     "duration": 245.294146,
     "bitrate": 1824251,
+    "cover": "data/covers/雪解け _feat. 倚水_.jpg",
     "src": "data/雪解け (feat. 倚水) - memento - tayori.flac"
   },
   {
@@ -267,6 +293,7 @@
     "date": "2024",
     "duration": 240.346146,
     "bitrate": 1837053,
+    "cover": "data/covers/風のたより.jpg",
     "src": "data/風のたより - memento - tayori.flac"
   },
   {
@@ -277,6 +304,7 @@
     "date": "2024",
     "duration": 247.777813,
     "bitrate": 1779726,
+    "cover": "data/covers/鯨の背中.jpg",
     "src": "data/鯨の背中 - memento - tayori.flac"
   }
 ]

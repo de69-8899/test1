@@ -1,20 +1,26 @@
 #!/bin/bash
 
 DATA_DIR="./data"
+COVER_DIR="$DATA_DIR/covers"
 OUTPUT_FILE="$DATA_DIR/tracks.json"
 
-echo "Generating tracks.json with advanced metadata..."
+mkdir -p "$COVER_DIR"
+
+echo "Generating tracks.json with metadata + album covers..."
 
 python3 <<'PY'
-import os
 import json
 import subprocess
 from pathlib import Path
 
 DATA_DIR = Path("./data")
+COVER_DIR = DATA_DIR / "covers"
 OUTPUT_FILE = DATA_DIR / "tracks.json"
 
 SUPPORTED = {".flac", ".mp3", ".wav", ".m4a", ".ogg", ".opus", ".aac"}
+
+def safe_name(text):
+    return "".join(c if c.isalnum() or c in " -_." else "_" for c in text).strip()
 
 def ffprobe_metadata(file_path):
     try:
@@ -32,10 +38,7 @@ def ffprobe_metadata(file_path):
 
         data = json.loads(result.stdout or "{}")
         fmt = data.get("format", {})
-
-        # 🔥 IMPORTANT: normalize tag keys (fix your issue)
-        raw_tags = fmt.get("tags", {})
-        tags = {k.lower(): v for k, v in raw_tags.items()}
+        tags = {k.lower(): v for k, v in fmt.get("tags", {}).items()}
 
         return {
             "title": tags.get("title"),
@@ -50,22 +53,46 @@ def ffprobe_metadata(file_path):
     except Exception:
         return {}
 
-def clean_filename_name(path):
-    return path.stem.replace("_", " ").strip()
+def extract_cover(file_path, title):
+    cover_name = safe_name(title) + ".jpg"
+    cover_path = COVER_DIR / cover_name
+
+    command = [
+        "ffmpeg",
+        "-y",
+        "-i", str(file_path),
+        "-an",
+        "-vcodec", "copy",
+        str(cover_path)
+    ]
+
+    result = subprocess.run(
+        command,
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL
+    )
+
+    if result.returncode == 0 and cover_path.exists() and cover_path.stat().st_size > 0:
+        return cover_path.as_posix()
+
+    return ""
 
 tracks = []
 
 for file in sorted(DATA_DIR.rglob("*")):
+    if "covers" in file.parts:
+        continue
+
     if file.suffix.lower() not in SUPPORTED:
         continue
 
     meta = ffprobe_metadata(file)
 
-    title = meta.get("title") or clean_filename_name(file)
+    title = meta.get("title") or file.stem.replace("_", " ").strip()
     artist = meta.get("artist") or "Unknown Artist"
     album = meta.get("album") or "Unknown Album"
 
-    rel_path = file.as_posix()
+    cover = extract_cover(file, title)
 
     tracks.append({
         "title": title,
@@ -75,11 +102,12 @@ for file in sorted(DATA_DIR.rglob("*")):
         "date": meta.get("date") or "",
         "duration": meta.get("duration"),
         "bitrate": meta.get("bitrate"),
-        "src": rel_path
+        "cover": cover,
+        "src": file.as_posix()
     })
 
 with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
     json.dump(tracks, f, ensure_ascii=False, indent=2)
 
-print(f"Done! Generated {OUTPUT_FILE} with {len(tracks)} tracks.")
+print(f"Done! Generated {len(tracks)} tracks with album covers.")
 PY
