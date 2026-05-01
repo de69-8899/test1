@@ -3,195 +3,280 @@
     "title": "0",
     "artist": "Ado",
     "album": "Zanmu",
+    "genre": "J-Pop",
+    "date": "2024",
+    "duration": 180.066021,
+    "bitrate": 1984935,
     "src": "data/0 - Zanmu - Ado.flac"
-  }
-,
+  },
   {
     "title": "Baby you",
     "artist": "YUKA",
     "album": "Baby you",
+    "genre": "",
+    "date": "2023-01-18",
+    "duration": 163.473152,
+    "bitrate": 942188,
     "src": "data/Baby you - Baby you - YUKA.flac"
-  }
-,
+  },
   {
     "title": "DIGNITY",
     "artist": "Ado",
     "album": "Zanmu",
+    "genre": "J-Pop",
+    "date": "2024",
+    "duration": 252.760604,
+    "bitrate": 1792869,
     "src": "data/DIGNITY - Zanmu - Ado.flac"
-  }
-,
+  },
   {
     "title": "MIRROR",
     "artist": "Ado",
     "album": "Zanmu",
+    "genre": "J-Pop",
+    "date": "2024",
+    "duration": 180.221833,
+    "bitrate": 1737177,
     "src": "data/MIRROR - Zanmu - Ado.flac"
-  }
-,
+  },
   {
     "title": "Value",
     "artist": "Ado",
     "album": "Zanmu",
+    "genre": "J-Pop",
+    "date": "2024",
+    "duration": 184.211979,
+    "bitrate": 1778157,
     "src": "data/Value - Zanmu - Ado.flac"
-  }
-,
+  },
   {
     "title": "いばら",
     "artist": "Ado",
     "album": "Zanmu",
+    "genre": "J-Pop",
+    "date": "2024",
+    "duration": 261.052438,
+    "bitrate": 1809381,
     "src": "data/いばら - Zanmu - Ado.flac"
-  }
-,
+  },
   {
     "title": "アタシは問題作",
     "artist": "Ado",
     "album": "Zanmu",
+    "genre": "J-Pop",
+    "date": "2024",
+    "duration": 194.522083,
+    "bitrate": 1831739,
     "src": "data/アタシは問題作 - Zanmu - Ado.flac"
-  }
-,
+  },
   {
     "title": "オールナイトレディオ",
     "artist": "Ado",
     "album": "Zanmu",
+    "genre": "J-Pop",
+    "date": "2024",
+    "duration": 212.570917,
+    "bitrate": 1867258,
     "src": "data/オールナイトレディオ - Zanmu - Ado.flac"
-  }
-,
+  },
   {
     "title": "クラクラ",
     "artist": "Ado",
     "album": "Zanmu",
+    "genre": "J-Pop",
+    "date": "2024",
+    "duration": 191.789375,
+    "bitrate": 1899680,
     "src": "data/クラクラ - Zanmu - Ado.flac"
-  }
-,
+  },
   {
     "title": "ショコラカタブラ",
     "artist": "Ado",
     "album": "Zanmu",
+    "genre": "J-Pop",
+    "date": "2024",
+    "duration": 184.624667,
+    "bitrate": 1874246,
     "src": "data/ショコラカタブラ - Zanmu - Ado.flac"
-  }
-,
+  },
   {
     "title": "ビビッド",
     "artist": "tayori",
     "album": "memento",
+    "genre": "",
+    "date": "2024",
+    "duration": 214.400021,
+    "bitrate": 1883164,
     "src": "data/ビビッド - memento - tayori.flac"
-  }
-,
+  },
   {
     "title": "メメント",
     "artist": "tayori",
     "album": "memento",
+    "genre": "",
+    "date": "2024",
+    "duration": 217.1155,
+    "bitrate": 1744643,
     "src": "data/メメント - memento - tayori.flac"
-  }
-,
+  },
   {
     "title": "リベリオン",
     "artist": "Ado",
     "album": "Zanmu",
+    "genre": "J-Pop",
+    "date": "2024",
+    "duration": 178.071229,
+    "bitrate": 1921218,
     "src": "data/リベリオン - Zanmu - Ado.flac"
-  }
-,
+  },
   {
     "title": "ルル",
     "artist": "Ado",
     "album": "Zanmu",
+    "genre": "J-Pop",
+    "date": "2024",
+    "duration": 197.860833,
+    "bitrate": 1890614,
     "src": "data/ルル - Zanmu - Ado.flac"
-  }
-,
+  },
   {
     "title": "向日葵",
     "artist": "Ado",
     "album": "Zanmu",
+    "genre": "J-Pop",
+    "date": "2024",
+    "duration": 259.592938,
+    "bitrate": 1765225,
     "src": "data/向日葵 - Zanmu - Ado.flac"
-  }
-,
+  },
   {
     "title": "唱",
     "artist": "Ado",
     "album": "Zanmu",
+    "genre": "J-Pop",
+    "date": "2024",
+    "duration": 192.663083,
+    "bitrate": 1848870,
     "src": "data/唱 - Zanmu - Ado.flac"
-  }
-,
+  },
   {
     "title": "夢遊",
     "artist": "tayori",
     "album": "memento",
+    "genre": "",
+    "date": "2024",
+    "duration": 199.800021,
+    "bitrate": 1718521,
     "src": "data/夢遊 - memento - tayori.flac"
-  }
-,
+  },
   {
     "title": "抜け空",
     "artist": "Ado",
     "album": "Zanmu",
+    "genre": "J-Pop",
+    "date": "2024",
+    "duration": 188.279188,
+    "bitrate": 1891610,
     "src": "data/抜け空 - Zanmu - Ado.flac"
-  }
-,
+  },
   {
     "title": "星になる (feat. 倚水)",
-    "artist": "tayori",
+    "artist": "Islet, 倚水",
     "album": "memento",
+    "genre": "",
+    "date": "2024",
+    "duration": 233.777792,
+    "bitrate": 1893988,
     "src": "data/星になる (feat. 倚水) - memento - tayori.flac"
-  }
-,
+  },
   {
     "title": "春を待つ (feat. 倚水)",
-    "artist": "tayori",
+    "artist": "Islet, 倚水",
     "album": "memento",
+    "genre": "",
+    "date": "2024",
+    "duration": 260.571438,
+    "bitrate": 1865861,
     "src": "data/春を待つ (feat. 倚水) - memento - tayori.flac"
-  }
-,
+  },
   {
     "title": "永遠のあくる日",
     "artist": "Ado",
     "album": "Zanmu",
+    "genre": "J-Pop",
+    "date": "2024",
+    "duration": 246.320021,
+    "bitrate": 1682042,
     "src": "data/永遠のあくる日 - Zanmu - Ado.flac"
-  }
-,
+  },
   {
     "title": "深夜特急",
     "artist": "tayori",
     "album": "memento",
+    "genre": "",
+    "date": "2024",
+    "duration": 261.857146,
+    "bitrate": 1865355,
     "src": "data/深夜特急 - memento - tayori.flac"
-  }
-,
+  },
   {
     "title": "白日夢 (feat. 倚水)",
-    "artist": "tayori",
+    "artist": "Islet, 倚水",
     "album": "memento",
+    "genre": "",
+    "date": "2024",
+    "duration": 250.833333,
+    "bitrate": 1916276,
     "src": "data/白日夢 (feat. 倚水) - memento - tayori.flac"
-  }
-,
+  },
   {
     "title": "花がら",
     "artist": "tayori",
     "album": "memento",
+    "genre": "",
+    "date": "2024",
+    "duration": 205.200021,
+    "bitrate": 1836169,
     "src": "data/花がら - memento - tayori.flac"
-  }
-,
+  },
   {
     "title": "行方知れず",
     "artist": "Ado",
     "album": "Zanmu",
+    "genre": "J-Pop",
+    "date": "2024",
+    "duration": 193.143021,
+    "bitrate": 1880476,
     "src": "data/行方知れず - Zanmu - Ado.flac"
-  }
-,
+  },
   {
     "title": "雪解け (feat. 倚水)",
-    "artist": "tayori",
+    "artist": "Islet, 倚水",
     "album": "memento",
+    "genre": "",
+    "date": "2024",
+    "duration": 245.294146,
+    "bitrate": 1824251,
     "src": "data/雪解け (feat. 倚水) - memento - tayori.flac"
-  }
-,
+  },
   {
     "title": "風のたより",
     "artist": "tayori",
     "album": "memento",
+    "genre": "",
+    "date": "2024",
+    "duration": 240.346146,
+    "bitrate": 1837053,
     "src": "data/風のたより - memento - tayori.flac"
-  }
-,
+  },
   {
     "title": "鯨の背中",
     "artist": "tayori",
     "album": "memento",
+    "genre": "",
+    "date": "2024",
+    "duration": 247.777813,
+    "bitrate": 1779726,
     "src": "data/鯨の背中 - memento - tayori.flac"
   }
 ]
