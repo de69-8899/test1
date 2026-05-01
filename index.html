@@ -353,6 +353,33 @@ aside.card {
     max-height: 160px;
   }
 }
+
+@media (max-width: 850px) {
+  .cover {
+    aspect-ratio: auto;        /* 🔥 allow natural height */
+    height: auto;
+    max-height: 55vh;          /* prevent too tall */
+  }
+
+  .cover img {
+    width: 100%;
+    height: auto;              /* 🔥 no crop */
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 850px) {
+  .player-hero::before {
+    filter: blur(60px) brightness(0.45);
+    transform: scale(1.4);
+  }
+}
+
+@media (max-width: 850px) {
+  .player-hero {
+    padding: 20px 12px;
+  }
+}
 </style>
 </head>
 
