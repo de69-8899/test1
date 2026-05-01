@@ -6,7 +6,7 @@ OUTPUT_FILE="$DATA_DIR/tracks.json"
 
 mkdir -p "$COVER_DIR"
 
-echo "Generating tracks.json with album-based covers..."
+echo "Generating tracks.json with metadata, album covers, and romaji search..."
 
 python3 <<'PY'
 import json
@@ -20,7 +20,25 @@ OUTPUT_FILE = DATA_DIR / "tracks.json"
 
 SUPPORTED = {".flac", ".mp3", ".wav", ".m4a", ".ogg", ".opus", ".aac"}
 
+try:
+    from pykakasi import kakasi
+    kks = kakasi()
+
+    def to_romaji(text):
+        if not text:
+            return ""
+        result = kks.convert(str(text))
+        return " ".join(item["hepburn"] for item in result)
+
+except ImportError:
+    print("Warning: pykakasi not installed. Romaji search disabled.")
+    print("Install with: pip install pykakasi")
+
+    def to_romaji(text):
+        return ""
+
 def safe_name(text):
+    text = str(text or "Unknown")
     return "".join(c if c.isalnum() or c in " -_." else "_" for c in text).strip()
 
 def album_key(artist, album):
@@ -100,19 +118,43 @@ for file in sorted(DATA_DIR.rglob("*")):
     title = meta.get("title") or file.stem.replace("_", " ").strip()
     artist = meta.get("artist") or "Unknown Artist"
     album = meta.get("album") or "Unknown Album"
+    genre = meta.get("genre") or ""
+    date = meta.get("date") or ""
 
     cover = extract_album_cover(file, artist, album)
+
+    filename_search = file.stem.replace("_", " ")
+
+    romaji = " ".join([
+        to_romaji(title),
+        to_romaji(artist),
+        to_romaji(album),
+        to_romaji(genre),
+        to_romaji(filename_search)
+    ]).strip()
+
+    search_text = " ".join([
+        str(title),
+        str(artist),
+        str(album),
+        str(genre),
+        str(date),
+        str(filename_search),
+        str(romaji)
+    ]).lower()
 
     tracks.append({
         "title": title,
         "artist": artist,
         "album": album,
-        "genre": meta.get("genre") or "",
-        "date": meta.get("date") or "",
+        "genre": genre,
+        "date": date,
         "duration": meta.get("duration"),
         "bitrate": meta.get("bitrate"),
         "cover": cover,
-        "src": file.as_posix()
+        "src": file.as_posix(),
+        "romaji": romaji,
+        "search": search_text
     })
 
 with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
@@ -120,4 +162,5 @@ with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
 
 print(f"Done! Generated {len(tracks)} tracks.")
 print("Album covers are reused per album.")
+print("Romaji search added when pykakasi is installed.")
 PY

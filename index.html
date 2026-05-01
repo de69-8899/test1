@@ -483,10 +483,10 @@ function shareTrack(track) {
 }
 
 function filterTracks() {
-  const q = search.value.toLowerCase();
+  const q = search.value.toLowerCase().trim();
 
   return tracks.filter(track =>
-    `${track.title} ${track.artist} ${track.album} ${track.genre} ${track.date}`
+    `${track.title || ""} ${track.artist || ""} ${track.album || ""} ${track.genre || ""} ${track.date || ""} ${track.romaji || ""} ${track.search || ""}`
       .toLowerCase()
       .includes(q)
   );
