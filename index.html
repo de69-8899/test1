@@ -287,6 +287,72 @@ button:hover {
   color: var(--muted);
   line-height: 1.6;
 }
+
+body {
+  overflow: hidden;
+}
+
+.app {
+  height: calc(100vh - 48px);
+}
+
+.card {
+  min-height: 0;
+}
+
+aside.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+#library {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 6px;
+  margin-bottom: 16px;
+}
+
+#queue {
+  max-height: 180px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+/* prettier scrollbar */
+#library::-webkit-scrollbar,
+#queue::-webkit-scrollbar {
+  width: 8px;
+}
+
+#library::-webkit-scrollbar-thumb,
+#queue::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 999px;
+}
+
+#library::-webkit-scrollbar-track,
+#queue::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+@media (max-width: 850px) {
+  body {
+    overflow: auto;
+  }
+
+  .app {
+    height: auto;
+  }
+
+  #library {
+    max-height: 55vh;
+  }
+
+  #queue {
+    max-height: 160px;
+  }
+}
 </style>
 </head>
 
