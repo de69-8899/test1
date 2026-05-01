@@ -482,14 +482,79 @@ function shareTrack(track) {
   }
 }
 
-function filterTracks() {
-  const q = search.value.toLowerCase().trim();
+function normalizeText(text) {
+  return String(text || "")
+    .toLowerCase()
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^\p{L}\p{N}\s]/gu, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
 
-  return tracks.filter(track =>
-    `${track.title || ""} ${track.artist || ""} ${track.album || ""} ${track.genre || ""} ${track.date || ""} ${track.romaji || ""} ${track.search || ""}`
-      .toLowerCase()
-      .includes(q)
-  );
+function levenshtein(a, b) {
+  a = normalizeText(a);
+  b = normalizeText(b);
+
+  const matrix = Array.from({ length: b.length + 1 }, (_, i) => [i]);
+
+  for (let j = 0; j <= a.length; j++) {
+    matrix[0][j] = j;
+  }
+
+  for (let i = 1; i <= b.length; i++) {
+    for (let j = 1; j <= a.length; j++) {
+      matrix[i][j] = b[i - 1] === a[j - 1]
+        ? matrix[i - 1][j - 1]
+        : Math.min(
+            matrix[i - 1][j - 1] + 1,
+            matrix[i][j - 1] + 1,
+            matrix[i - 1][j] + 1
+          );
+    }
+  }
+
+  return matrix[b.length][a.length];
+}
+
+function fuzzyMatch(query, text) {
+  query = normalizeText(query);
+  text = normalizeText(text);
+
+  if (!query) return true;
+  if (text.includes(query)) return true;
+
+  const words = text.split(" ");
+  const queryWords = query.split(" ");
+
+  return queryWords.every(qWord => {
+    return words.some(word => {
+      if (word.includes(qWord)) return true;
+
+      const distance = levenshtein(qWord, word);
+      const limit = qWord.length <= 4 ? 1 : 2;
+
+      return distance <= limit;
+    });
+  });
+}
+
+function filterTracks() {
+  const q = search.value;
+
+  return tracks.filter(track => {
+    const searchable = `
+      ${track.title || ""}
+      ${track.artist || ""}
+      ${track.album || ""}
+      ${track.genre || ""}
+      ${track.date || ""}
+      ${track.romaji || ""}
+      ${track.search || ""}
+    `;
+
+    return fuzzyMatch(q, searchable);
+  });
 }
 
 search.addEventListener("input", () => {

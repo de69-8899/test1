@@ -3,10 +3,11 @@
 DATA_DIR="./data"
 COVER_DIR="$DATA_DIR/covers"
 OUTPUT_FILE="$DATA_DIR/tracks.json"
+CACHE_FILE="$DATA_DIR/romaji-cache.json"
 
 mkdir -p "$COVER_DIR"
 
-echo "Generating tracks.json with metadata, album covers, and romaji search..."
+echo "Generating tracks.json with metadata, album covers, romaji cache, and fuzzy search data..."
 
 python3 <<'PY'
 import json
@@ -17,25 +18,42 @@ from pathlib import Path
 DATA_DIR = Path("./data")
 COVER_DIR = DATA_DIR / "covers"
 OUTPUT_FILE = DATA_DIR / "tracks.json"
+CACHE_FILE = DATA_DIR / "romaji-cache.json"
 
 SUPPORTED = {".flac", ".mp3", ".wav", ".m4a", ".ogg", ".opus", ".aac"}
 
 try:
     from pykakasi import kakasi
     kks = kakasi()
-
-    def to_romaji(text):
-        if not text:
-            return ""
-        result = kks.convert(str(text))
-        return " ".join(item["hepburn"] for item in result)
-
+    ROMAJI_ENABLED = True
 except ImportError:
-    print("Warning: pykakasi not installed. Romaji search disabled.")
-    print("Install with: pip install pykakasi")
+    print("Warning: pykakasi not installed. Install with: python3 -m pip install pykakasi")
+    ROMAJI_ENABLED = False
 
-    def to_romaji(text):
+if CACHE_FILE.exists():
+    with open(CACHE_FILE, "r", encoding="utf-8") as f:
+        romaji_cache = json.load(f)
+else:
+    romaji_cache = {}
+
+def to_romaji(text):
+    text = str(text or "").strip()
+
+    if not text:
         return ""
+
+    if text in romaji_cache:
+        return romaji_cache[text]
+
+    if not ROMAJI_ENABLED:
+        romaji_cache[text] = ""
+        return ""
+
+    result = kks.convert(text)
+    romaji = " ".join(item["hepburn"] for item in result).strip()
+
+    romaji_cache[text] = romaji
+    return romaji
 
 def safe_name(text):
     text = str(text or "Unknown")
@@ -122,7 +140,6 @@ for file in sorted(DATA_DIR.rglob("*")):
     date = meta.get("date") or ""
 
     cover = extract_album_cover(file, artist, album)
-
     filename_search = file.stem.replace("_", " ")
 
     romaji = " ".join([
@@ -160,7 +177,9 @@ for file in sorted(DATA_DIR.rglob("*")):
 with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
     json.dump(tracks, f, ensure_ascii=False, indent=2)
 
+with open(CACHE_FILE, "w", encoding="utf-8") as f:
+    json.dump(romaji_cache, f, ensure_ascii=False, indent=2)
+
 print(f"Done! Generated {len(tracks)} tracks.")
-print("Album covers are reused per album.")
-print("Romaji search added when pykakasi is installed.")
+print(f"Romaji cache saved to {CACHE_FILE}")
 PY
