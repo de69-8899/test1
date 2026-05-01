@@ -1,74 +1,197 @@
 [
   {
+    "title": "0",
+    "artist": "Ado",
+    "album": "Zanmu",
+    "src": "data/0 - Zanmu - Ado.flac"
+  }
+,
+  {
     "title": "Baby you",
     "artist": "YUKA",
     "album": "Baby you",
-    "src": "data/Baby you - YUKA.flac"
-  },
+    "src": "data/Baby you - Baby you - YUKA.flac"
+  }
+,
+  {
+    "title": "DIGNITY",
+    "artist": "Ado",
+    "album": "Zanmu",
+    "src": "data/DIGNITY - Zanmu - Ado.flac"
+  }
+,
+  {
+    "title": "MIRROR",
+    "artist": "Ado",
+    "album": "Zanmu",
+    "src": "data/MIRROR - Zanmu - Ado.flac"
+  }
+,
+  {
+    "title": "Value",
+    "artist": "Ado",
+    "album": "Zanmu",
+    "src": "data/Value - Zanmu - Ado.flac"
+  }
+,
+  {
+    "title": "いばら",
+    "artist": "Ado",
+    "album": "Zanmu",
+    "src": "data/いばら - Zanmu - Ado.flac"
+  }
+,
+  {
+    "title": "アタシは問題作",
+    "artist": "Ado",
+    "album": "Zanmu",
+    "src": "data/アタシは問題作 - Zanmu - Ado.flac"
+  }
+,
+  {
+    "title": "オールナイトレディオ",
+    "artist": "Ado",
+    "album": "Zanmu",
+    "src": "data/オールナイトレディオ - Zanmu - Ado.flac"
+  }
+,
+  {
+    "title": "クラクラ",
+    "artist": "Ado",
+    "album": "Zanmu",
+    "src": "data/クラクラ - Zanmu - Ado.flac"
+  }
+,
+  {
+    "title": "ショコラカタブラ",
+    "artist": "Ado",
+    "album": "Zanmu",
+    "src": "data/ショコラカタブラ - Zanmu - Ado.flac"
+  }
+,
   {
     "title": "ビビッド",
     "artist": "tayori",
     "album": "memento",
-    "src": "data/ビビッド - Toyori.flac"
-  },
+    "src": "data/ビビッド - memento - tayori.flac"
+  }
+,
   {
     "title": "メメント",
     "artist": "tayori",
     "album": "memento",
-    "src": "data/メメント - Toyori.flac"
-  },
+    "src": "data/メメント - memento - tayori.flac"
+  }
+,
+  {
+    "title": "リベリオン",
+    "artist": "Ado",
+    "album": "Zanmu",
+    "src": "data/リベリオン - Zanmu - Ado.flac"
+  }
+,
+  {
+    "title": "ルル",
+    "artist": "Ado",
+    "album": "Zanmu",
+    "src": "data/ルル - Zanmu - Ado.flac"
+  }
+,
+  {
+    "title": "向日葵",
+    "artist": "Ado",
+    "album": "Zanmu",
+    "src": "data/向日葵 - Zanmu - Ado.flac"
+  }
+,
+  {
+    "title": "唱",
+    "artist": "Ado",
+    "album": "Zanmu",
+    "src": "data/唱 - Zanmu - Ado.flac"
+  }
+,
   {
     "title": "夢遊",
     "artist": "tayori",
     "album": "memento",
-    "src": "data/夢遊 - Toyori.flac"
-  },
+    "src": "data/夢遊 - memento - tayori.flac"
+  }
+,
+  {
+    "title": "抜け空",
+    "artist": "Ado",
+    "album": "Zanmu",
+    "src": "data/抜け空 - Zanmu - Ado.flac"
+  }
+,
   {
     "title": "星になる (feat. 倚水)",
     "artist": "tayori",
     "album": "memento",
-    "src": "data/星になる (feat. 倚水) - Toyori.flac"
-  },
+    "src": "data/星になる (feat. 倚水) - memento - tayori.flac"
+  }
+,
   {
     "title": "春を待つ (feat. 倚水)",
     "artist": "tayori",
     "album": "memento",
-    "src": "data/春を待つ (feat. 倚水) - Toyori.flac"
-  },
+    "src": "data/春を待つ (feat. 倚水) - memento - tayori.flac"
+  }
+,
+  {
+    "title": "永遠のあくる日",
+    "artist": "Ado",
+    "album": "Zanmu",
+    "src": "data/永遠のあくる日 - Zanmu - Ado.flac"
+  }
+,
   {
     "title": "深夜特急",
     "artist": "tayori",
     "album": "memento",
-    "src": "data/深夜特急 - Toyori.flac"
-  },
+    "src": "data/深夜特急 - memento - tayori.flac"
+  }
+,
   {
     "title": "白日夢 (feat. 倚水)",
     "artist": "tayori",
     "album": "memento",
-    "src": "data/白日夢 (feat. 倚水) - Toyori.flac"
-  },
+    "src": "data/白日夢 (feat. 倚水) - memento - tayori.flac"
+  }
+,
   {
     "title": "花がら",
     "artist": "tayori",
     "album": "memento",
-    "src": "data/花がら - Toyori.flac"
-  },
+    "src": "data/花がら - memento - tayori.flac"
+  }
+,
+  {
+    "title": "行方知れず",
+    "artist": "Ado",
+    "album": "Zanmu",
+    "src": "data/行方知れず - Zanmu - Ado.flac"
+  }
+,
   {
     "title": "雪解け (feat. 倚水)",
     "artist": "tayori",
     "album": "memento",
-    "src": "data/雪解け (feat. 倚水) - Toyori.flac"
-  },
+    "src": "data/雪解け (feat. 倚水) - memento - tayori.flac"
+  }
+,
   {
     "title": "風のたより",
     "artist": "tayori",
     "album": "memento",
-    "src": "data/風のたより - Toyori.flac"
-  },
+    "src": "data/風のたより - memento - tayori.flac"
+  }
+,
   {
     "title": "鯨の背中",
     "artist": "tayori",
     "album": "memento",
-    "src": "data/鯨の背中 - Toyori.flac"
+    "src": "data/鯨の背中 - memento - tayori.flac"
   }
 ]
