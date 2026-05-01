@@ -6,11 +6,12 @@ OUTPUT_FILE="$DATA_DIR/tracks.json"
 
 mkdir -p "$COVER_DIR"
 
-echo "Generating tracks.json with metadata + album covers..."
+echo "Generating tracks.json with album-based covers..."
 
 python3 <<'PY'
 import json
 import subprocess
+import hashlib
 from pathlib import Path
 
 DATA_DIR = Path("./data")
@@ -21,6 +22,11 @@ SUPPORTED = {".flac", ".mp3", ".wav", ".m4a", ".ogg", ".opus", ".aac"}
 
 def safe_name(text):
     return "".join(c if c.isalnum() or c in " -_." else "_" for c in text).strip()
+
+def album_key(artist, album):
+    raw = f"{artist}__{album}".lower().strip()
+    short_hash = hashlib.md5(raw.encode("utf-8")).hexdigest()[:8]
+    return f"{safe_name(artist)} - {safe_name(album)} - {short_hash}"
 
 def ffprobe_metadata(file_path):
     try:
@@ -53,9 +59,12 @@ def ffprobe_metadata(file_path):
     except Exception:
         return {}
 
-def extract_cover(file_path, title):
-    cover_name = safe_name(title) + ".jpg"
+def extract_album_cover(file_path, artist, album):
+    cover_name = album_key(artist, album) + ".jpg"
     cover_path = COVER_DIR / cover_name
+
+    if cover_path.exists() and cover_path.stat().st_size > 0:
+        return cover_path.as_posix()
 
     command = [
         "ffmpeg",
@@ -92,7 +101,7 @@ for file in sorted(DATA_DIR.rglob("*")):
     artist = meta.get("artist") or "Unknown Artist"
     album = meta.get("album") or "Unknown Album"
 
-    cover = extract_cover(file, title)
+    cover = extract_album_cover(file, artist, album)
 
     tracks.append({
         "title": title,
@@ -109,5 +118,6 @@ for file in sorted(DATA_DIR.rglob("*")):
 with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
     json.dump(tracks, f, ensure_ascii=False, indent=2)
 
-print(f"Done! Generated {len(tracks)} tracks with album covers.")
+print(f"Done! Generated {len(tracks)} tracks.")
+print("Album covers are reused per album.")
 PY
