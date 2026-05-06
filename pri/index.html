@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Prism Crack Tutorial</title>
+  <title>Prism</title>
 
   <style>
     * {
@@ -83,6 +83,16 @@
       text-decoration: underline;
     }
 
+    .tip {
+      margin-top: 10px;
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.4);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 14px;
+      color: #c7d2fe;
+    }
+
     .command-box {
       margin-top: 12px;
       display: flex;
@@ -101,34 +111,8 @@
       overflow-x: auto;
       white-space: nowrap;
       padding-bottom: 2px;
-    }
 
-    button {
-      border: none;
-      background: #6366f1;
-      color: white;
-      padding: 10px 14px;
-      border-radius: 10px;
-      cursor: pointer;
-      font-weight: bold;
-      transition: 0.2s;
-    }
-
-    button:hover {
-      background: #4f46e5;
-    }
-
-    .note {
-      margin-top: 24px;
-      color: #9ca3af;
-      font-size: 14px;
-      text-align: center;
-    }
-
-    /* ===== PRETTY SCROLLBAR (UNOBTRUSIVE) ===== */
-
-    code {
-      scrollbar-width: thin; /* Firefox */
+      scrollbar-width: thin;
       scrollbar-color: rgba(99,102,241,0.5) transparent;
     }
 
@@ -143,7 +127,6 @@
     code::-webkit-scrollbar-thumb {
       background: rgba(99, 102, 241, 0.35);
       border-radius: 999px;
-      transition: background 0.2s ease;
     }
 
     code::-webkit-scrollbar-thumb:hover {
@@ -154,45 +137,68 @@
       display: none;
     }
 
-    /* Only show scrollbar clearly on hover */
-    .command-box code::-webkit-scrollbar {
-      opacity: 0;
+    button {
+      border: none;
+      background: #6366f1;
+      color: white;
+      padding: 10px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
     }
 
-    .command-box:hover code::-webkit-scrollbar {
-      opacity: 1;
+    button:hover {
+      background: #4f46e5;
     }
 
+    .note {
+      margin-top: 24px;
+      color: #9ca3af;
+      font-size: 14px;
+      text-align: center;
+    }
   </style>
 </head>
 
 <body>
   <main class="card">
-    <h1>Prism Crack Tutorial :</h1>
+    <h1>Prism Crack Setup</h1>
     <!-- <p class="subtitle">
       Follow these simple steps to install and prepare Prism Launcher.
     </p> -->
 
     <ol>
       <li>
-        Download Prism Launcher from:
+        Download Prism Launcher installer from:
         <br />
         <a href="https://prismlauncher.org/download/windows/" target="_blank">
           Prism Launcher Windows Download
         </a>
+
+        <div class="tip">
+          Tip: Make sure to download the <b>installer</b> and not the portable version, otherwise step 3 will not work.
+        </div>
       </li>
 
       <li>
-        Install Prism Launcher on your computer.
+        Open the .exe file and finish the installation.
       </li>
 
-      <li>
-        Close Prism Launcher, then run this command in CMD as administrator:
+            <li>
+        Close Prism Launcher, then run this command in Command Prompt as administrator:
 
         <div class="command-box">
-          <code id="command">echo {"accounts": [{"entitlement": {"canPlayMinecraft": true,"ownsMinecraft": true},"type": "MSA"}],"formatVersion": 3} > "%appdata%\PrismLauncher\accounts.json"</code>
+          <code id="command">echo testtesttesttesttesttesttesttesttesttest</code>
           <button onclick="copyCommand()">Copy</button>
         </div>
+      </li>
+
+      <li>
+        Open Prism Launcher and complete the first installation setup.<br /><br /> If you are asked to add a Microsoft account, skip it by clicking the <b>Finish</b> button.
+      </li>
+
+      <li>
+        Open the <b>Account Manager</b> tab at the upper-right side of the launcher, then make an offline account.
       </li>
 
       <li>
